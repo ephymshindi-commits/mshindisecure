@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects — Ephy Mshindi</title>
+  <meta name="description" content="MshindiSecure, SPACE-Y and other production engineering work by Ephy Mshindi." />
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    /* ── PROJECT PAGE ── */
+    .project-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 6px 16px 6px 6px;
+      margin-bottom: 24px;
+    }
+    .project-hero-badge-num {
+      background: var(--cyan-glow);
+      border: 1px solid rgba(0,212,255,0.2);
+      color: var(--cyan);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      border-radius: 40px;
+      padding: 3px 10px;
+    }
+    .project-hero-badge-text {
+      font-size: 0.82rem;
+      color: var(--muted-bright);
+    }
+
+    .project-full {
+      background: var(--surface-1);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      margin-bottom: 48px;
+    }
+
+    .project-full-header {
+      background: var(--surface-2);
+      border-bottom: 1px solid var(--border);
+      padding: 40px 48px;
+      position: relative;
+      overflow: hidden;
+    }
+    .project-full-header::after {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 300px; height: 100%;
+      background: radial-gradient(ellipse at right center, var(--cyan-glow-lg), transparent 70%);
+      pointer-events: none;
+    }
+    .project-full-header.green-glow::after {
+      background: radial-gradient(ellipse at right center, rgba(0,255,140,0.04), transparent 70%);
+    }
+
+    .project-full-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .project-full-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 700;
+      color: var(--ghost);
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    .project-full-overview {
+      font-size: 1rem;
+      color: var(--muted-bright);
+      max-width: 680px;
+      line-height: 1.8;
+    }
+
+    .project-full-body {
+      padding: 48px;
+    }
+
+    .project-section {
+      margin-bottom: 48px;
+    }
+    .project-section:last-child { margin-bottom: 0; }
+
+    .project-section-title {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--ghost);
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .project-section-title svg { color: var(--cyan); flex-shrink: 0; }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
+    }
+
+    .feature-item {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 16px 18px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    .feature-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--cyan);
+      box-shadow: 0 0 6px var(--cyan);
+      margin-top: 6px;
+      flex-shrink: 0;
+    }
+    .feature-dot.green { background: var(--green); box-shadow: 0 0 6px var(--green); }
+    .feature-item-title {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--ghost);
+      margin-bottom: 4px;
+    }
+    .feature-item-text {
+      font-size: 0.8rem;
+      color: var(--muted-bright);
+      line-height: 1.6;
+    }
+
+    .arch-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+    }
+    .arch-block {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      text-align: center;
+    }
+    .arch-block-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .arch-block-value {
+      font-size: 0.875rem;
+      color: var(--ghost);
+      font-weight: 600;
+    }
+
+    .security-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
+    }
+    .security-item {
+      background: rgba(0,255,140,0.04);
+      border: 1px solid rgba(0,255,140,0.14);
+      border-radius: var(--radius-md);
+      padding: 18px;
+    }
+    .security-item-title {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--green);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .security-item-title::before {
+      content: '🔒';
+      font-size: 0.9rem;
+    }
+    .security-item-text {
+      font-size: 0.82rem;
+      color: var(--muted-bright);
+      line-height: 1.65;
+    }
+
+    .challenge-item {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      margin-bottom: 12px;
+    }
+    .challenge-problem {
+      padding: 18px 20px;
+      background: rgba(255,107,53,0.04);
+      border-right: 1px solid var(--border);
+    }
+    .challenge-solution {
+      padding: 18px 20px;
+      background: rgba(0,212,255,0.03);
+    }
+    .ch-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: 8px;
+    }
+    .ch-label.problem { color: var(--orange); }
+    .ch-label.solution { color: var(--cyan); }
+    .ch-text { font-size: 0.85rem; color: var(--muted-bright); line-height: 1.6; }
+
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 14px;
+    }
+    .impact-stat {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 18px;
+      text-align: center;
+    }
+    .impact-num {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--cyan);
+    }
+    .impact-label {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .insight-box {
+      background: linear-gradient(135deg, rgba(0,212,255,0.06), rgba(0,212,255,0.02));
+      border: 1px solid rgba(0,212,255,0.2);
+      border-left: 3px solid var(--cyan);
+      border-radius: var(--radius-md);
+      padding: 18px 20px;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      color: var(--text);
+      line-height: 1.7;
+    }
+    .insight-box .insight-label {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--cyan);
+      margin-bottom: 8px;
+    }
+
+    .tech-stack-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    @media (max-width: 768px) {
+      .project-full-header, .project-full-body { padding: 28px 24px; }
+      .challenge-item { grid-template-columns: 1fr; }
+      .challenge-problem { border-right: none; border-bottom: 1px solid var(--border); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── PAGE HERO ── -->
+  <div class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="container">
+      <div class="section-eyebrow reveal">Engineering Work</div>
+      <h1 class="section-title reveal reveal-delay-1">Systems shipped.<br /><span class="text-cyan">Architecture documented.</span></h1>
+      <p class="section-subtitle reveal reveal-delay-2">Not portfolio filler. Real applications with real users, real threat models, and real engineering decisions.</p>
+    </div>
+  </div>
+
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+
+      <!-- ══ PROJECT 1: MshindiSecure ══ -->
+      <div class="project-full reveal" id="mshindisecure">
+        <div class="project-full-header">
+          <div class="project-full-meta">
+            <span class="tag tag-orange">FLAGSHIP PROJECT</span>
+            <span class="tag tag-ghost">Security Tooling</span>
+            <span class="tag tag-ghost">Offensive + Defensive</span>
+          </div>
+          <h2 class="project-full-title">MshindiSecure</h2>
+          <p class="project-full-overview">
+            A dual-purpose cybersecurity platform combining offensive penetration testing utilities with a production-ready defensive monitoring system. Designed for organizations that need to both audit their own infrastructure and actively protect live login systems against injection attacks, credential stuffing, and brute-force campaigns — in real time.
+          </p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:28px;">
+            <div class="project-hero-badge">
+              <span class="project-hero-badge-num">FOUNDER</span>
+              <span class="project-hero-badge-text">Ephy Mshindi</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-full-body">
+
+          <!-- Key Features -->
+          <div class="project-section">
+            <h3 class="project-section-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              Key Features
+            </h3>
+            <div class="features-grid">
+              <div class="feature-item">
+                <div class="feature-dot"></div>
+                <div>
+                  <div class="feature-item-title">Real-Time Login Monitoring</div>
+                  <div class="feature-item-text">Continuous surveillance of login events across monitored endpoints, flagging anomalous patterns within milliseconds of detection.</div>
+                </div>
+              </div>
+              <div class="feature-item">
+                <div class="feature-dot green"></div>
+                <div>
+                  <div class="feature-item-title">SQLi Pattern Engine</div>
+                  <div class="feature-item-text">Multi-layer SQL injection detection using signature matching, heuristic analysis, and parameterized query enforcement.</div>
+                </div>
+              </div>
+              <div class="feature-item">
+                <div class="feature-dot"></div>
+                <div>
+                  <div class="feature-item-title">Brute Force Throttling</div>
+                  <div class="feature-item-text">Adaptive rate-limiting with progressive lockout, CAPTCHA escalation, and automatic IP blocking on threshold breach.</div>
+                </div>
+              </div>
+              <div class="feature-item">
+                <div class="feature-dot green"></div>
+                <div>
+                  <div class="feature-item-title">Incident Dashboard</div>
+                  <div class="feature-item-text">Operator-facing panel displaying live threat feed, blocked IPs, attack vectors, and session anomaly classifications.</div>
+                </div>
+              </div>
+              <div class="feature-item">
+                <div class="feature-dot"></div>
+                <div>
+                  <div class="feature-item-title">Pentesting Utilities</div>
+                  <div class="feature-item-text">Offensive tools for authorized testing: form fuzzing, header injection probes, session token analysis, and directory enumeration.</div>
+                </div>
+              </div>
+              <div class="feature-item">
+                <div class="feature-dot green"></div>
+                <div>
+                  <div class="feature-item-title">Alert & Audit Logging</div>
+                  <div class="feature-item-text">Structured log output compatible with SIEM ingestion. Every threat event is timestamped, classified, and persisted for forensic review.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Technical Architecture -->
+          <div class="project-section">
+            <h3 class="project-section-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+              Technical Architecture
+            </h3>
+            <div class="arch-row">
+              <div class="arch-block">
+                <div class="arch-block-label">Detection Engine</div>
+                <div class="arch-block-value">Python</div>
+              </div>
+              <div class="arch-block">
+                <div class="arch-block-label">Dashboard</div>
+                <div class="arch-block-value">JavaScript / HTML</div>
+              </div>
+              <div class="arch-block">
+                <div class="arch-block-label">Data Store</div>
+                <div class="arch-block-value">SQL (structured logging)</div>
+              </div>
+              <div class="arch-block">
+                <div class="arch-block-label">Pentest Toolkit</div>
+                <div class="arch-block-value">Python + Kali Linux</div>
+              </div>
+              <div class="arch-block">
+                <div class="arch-block-label">Environment</div>
+                <div class="arch-block-value">Kali Linux / Ubuntu</div>
+              </div>
+            </div>
+            <div class="mt-16" style="font-size:0.875rem;color:var(--muted-bright);line-height:1.75;">
+              The platform operates as a middleware layer, intercepting authentication requests before they reach the application database. The Python detection engine applies rule-based and heuristic analysis to each request payload, with sub-millisecond evaluation time. Flagged requests trigger a three-tier response: log → alert → block, allowing operators to configure aggression thresholds based on environment risk profile.
+            </div>
+          </div>
+
+          <!-- Security Implementation -->
+          <div class="project-section">
+            <h3 class="project-section-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              Security Implementation
+            </h3>
+            <div class="security-grid">
+              <div class="security-item">
+                <div class="security-item-title">SQL Injection Prevention</div>
+                <div class="security-item-text">Dual-layer defense: input sanitization at the request boundary + parameterized queries enforced at the data layer. Pattern library covers UNION-based, blind, time-based, and error-based SQLi variants.</div>
+              </div>
+              <div class="security-item">
+                <div class="security-item-title">Brute Force Defense</div>
+                <div class="security-item-text">Rate limiting per IP and per user account. Exponential backoff on repeated failures. Automatic lockout with configurable thresholds. IP reputation cross-reference for known bad actors.</div>
+              </div>
+              <div class="security-item">
+                <div class="security-item-title">Session Anomaly Detection</div>
+                <div class="security-item-text">Flags credential stuffing via impossible travel detection, user-agent drift, and session token reuse patterns. Suspicious sessions are quarantined and queued for operator review.</div>
+              </div>
+              <div class="security-item">
+                <div class="security-item-title">Threat Classification</div>
+                <div class="security-item-text">Every incident is tagged by attack type, severity level, and confidence score. Classification informs automated response and provides structured data for downstream SIEM or SOC tooling.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Challenges & Solutions -->
+          <div class="project-section">
+            <h3 class="project-section-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/></svg>
+              Challenges &amp; Solutions
+            </h3>
+            <div>
+              <div class="challenge-item">
+                <div class="challenge-problem">
+                  <div class="ch-label problem">Problem</div>
+                  <div class="ch-text">Distinguishing legitimate high-frequency login attempts (API clients, mobile apps) from credential stuffing attacks without triggering false positives on valid users.</div>
+                </div>
+                <div class="challenge-solution">
+                  <div class="ch-label solution">Solution</div>
+                  <div class="ch-text">Built a behavioral profiling layer that establishes per-client request baselines. Alerts only fire when deviation from baseline exceeds configurable statistical thresholds — not on raw volume alone.</div>
+                </div>
+              </div>
+              <div class="challenge-item">
+                <div class="challenge-problem">
+                  <div class="ch-label problem">Problem</div>
+                  <div class="ch-text">Attackers rotate IP addresses to bypass simple IP-based rate limiting, making per-IP blocks insufficient as a primary defense.</div>
+                </div>
+                <div class="challenge-solution">
+                  <div class="ch-label solution">Solution</div>
+                  <div class="ch-text">Shifted rate limiting to the account layer rather than solely IP-layer. Combined with fingerprinting via User-Agent, device signals, and timing patterns to detect distributed attacks from rotating IPs.</div>
+                </div>
+              </div>
+              <div class="challenge-item">
+                <div class="challenge-problem">
+                  <div class="ch-label problem">Problem</div>
+                  <div class="ch-text">Obfuscated SQL injection attempts (URL-encoding, comment injection, case variation) bypassing basic regex-based filters.</div>
+                </div>
+                <div class="challenge-solution">
+                  <div class="ch-label solution">Solution</div>
+                  <div class="ch-text">Implemented input normalization before pattern matching — decoding all common obfuscation layers before analysis. The detection engine evaluates the decoded payload, not the raw string.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Impact -->
+          <div class="project-section">
+            <h3 class="project-section-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+              Impact &amp; Results
+            </h3>
+            <div class="impact-grid">
+              <div class="impact-stat">
+                <div class="impact-num">3+</div>
+                <div class="impact-label">Attack vectors covered</div>
+              </div>
+              <div class="impact-stat">
+                <div class="impact-num">&lt;1ms</div>
+                <div class="impact-label">Detection latency</div>
+              </div>
+              <div class="impact-stat">
+                <div class="impact-num">Auto</div>
+                <div class="impact-label">Block on detection</div>
+              </div>
+              <div class="impact-stat">
+                <div class="impact-num">100%</div>
+                <div class="impact-label">Audit trail retained</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Engineering Insight -->
+          <div class="insight-box">
+            <div class="insight-label">// Engineering Insight</div>
+            The most interesting technical challenge in MshindiSecure was building a detection engine that's adversarially robust — one that remains effective as attackers adapt. The solution wasn't a bigger ruleset; it was designing the system to normalize inputs before analysis, making obfuscation attacks structurally harder to execute.
+          </div>
+
+          <!-- Tech Stack -->
+          <div class="project-section mt-32" style="margin-bottom:0;">
+            <h3 class="project-section-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              Tech Stack
+            </h3>
+            <div class="tech-stack-row">
+              <span class="tag tag-cyan">Python</span>
+              <span class="tag tag-cyan">JavaScript</span>
+              <span class="tag tag-cyan">SQL</span>
+              <span class="tag tag-ghost">HTML / CSS</span>
+              <span class="tag tag-ghost">Kali Linux</span>
+              <span class="tag tag-ghost">Burp Suite</span>
+              <span class="tag tag-ghost">Nmap</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ PROJECT 2: SPACE-Y ══ -->
+      <div class="project-full reveal" id="spacey">
+        <div class="project-full-header green-glow">
+          <div class="project-full-meta">
+            <span class="tag tag-cyan">LIVE · 80+ USERS</span>
+            <span class="tag tag-ghost">Full Stack</span>
+            <span class="tag tag-ghost">Real-Time Platform</span>
+          </div>
+          <h2 class="project-full-title">SPACE-Y</h2>
+          <p class="project-full-overview">
+            A full-featured social discovery platform built for real-time human connection — combining live chat, peer-to-peer voice and video calls, a swipe-based user discovery engine, and an administrative control panel. Currently serving an active user base of 80+ with zero downtime since launch, built entirely on a security-conscious architecture.
+          </p>
+        </div>
+
+        <div class="project-full-body">
+
+          <!-- Key Features -->
+          <div class="project-section">
+            <h3 class="project-section-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              Key Features
+            </h3>
+            <div class="features-grid">
+              <div class="feature-item">
+                <div class="feature-dot" style="background:var(--cyan);box-shadow:0 0 6px var(--cyan);"></div>
+                <div>
+                  <div class="feature-item-title">Real-Time Messaging</div>
+                  <div class="feature-item-text">Sub-100ms message delivery via Supabase Realtime channels with read receipts, typing indicators, and persistent conversation history.</div>
+                </div>
+              </div>
+              <div class="feature-item">
+                <div class="feature-dot" style="background:var(--cyan);box-shadow:0 0 6px var(--cyan);"></div>
+                <div>
+                  <div class="feature-item-title">Voice &amp; Video Calls</div>
+                  <div class="feature-item-text">Peer-to-peer calling via WebRTC with signaling handled through Supabase. Handles NAT traversal, connection negotiation, and graceful fallback on poor connections.</div>
+                </div>
+              </div>
+              <div class="feature-item">
+                <div class="feature-dot" style="background:var(--cyan);box-shadow:0 0 6px var(--cyan);"></div>
+                <div>
+                  <div class="feature-item-title">Swipe Discovery System</div>
+                  <div class="feature-item-text">Profile discovery with swipe-based matching logic. Mutual matches unlock messaging — preventing spam while maintaining a frictionless UX for genuine connections.</div>
+                </div>
+              </div>
+              <div class="feature-item">
+                <div class="feature-dot" style="background:var(--cyan);box-shadow:0 0 6px var(--cyan);"></div>
+                <div>
+                  <div class="feature-item-title">Admin Panel</div>
+                  <div class="feature-item-text">Operator dashboard with user management, moderation controls, session oversight, content flagging, and real-time platform health metrics.</div>
+                </div>
+              </div>
+              <div class="feature-item">
+                <div class="feature-dot" style="background:var(--cyan);box-shadow:0 0 6px var(--cyan);"></div>
+                <div>
+                  <div class="feature-item-title">Multi-User Scaling</div>
+                  <div class="feature-item-text">Architecture designed for horizontal scaling. Supabase connection pooling and edge caching handle concurrent load without degraded performance.</div>
+                </div>
+              </div>
+              <div class="feature-item">
+                <div class="feature-dot" style="background:var(--cyan);box-shadow:0 0 6px var(--cyan);"></div>
+                <div>
+                  <div class="feature-item-title">Profile &amp; Media</div>
+                  <div class="feature-item-text">User profile system with secure media upload, Supabase Storage integration, and CDN-optimized asset delivery.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Architecture -->
+          <div class="project-section">
+            <h3 class="project-section-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+              Technical Architecture
+            </h3>
+            <div class="arch-row">
+              <div class="arch-block">
+                <div class="arch-block-label">Frontend</div>
+                <div class="arch-block-value">React</div>
+              </div>
+              <div class="arch-block">
+                <div class="arch-block-label">Backend API</div>
+                <div class="arch-block-value">Node.js</div>
+              </div>
+              <div class="arch-block">
+                <div class="arch-block-label">Database + Realtime</div>
+                <div class="arch-block-value">Supabase (PostgreSQL)</div>
+              </div>
+              <div class="arch-block">
+                <div class="arch-block-label">Calls</div>
+                <div class="arch-block-value">WebRTC</div>
+              </div>
+              <div class="arch-block">
+                <div class="arch-block-label">Storage</div>
+                <div class="arch-block-value">Supabase Storage</div>
+              </div>
+            </div>
+            <div class="mt-16" style="font-size:0.875rem;color:var(--muted-bright);line-height:1.75;">
+              SPACE-Y is built on a single-origin API design — all client state is validated server-side before persistence. The React frontend communicates with the Node.js API layer for business logic, while Supabase Realtime subscriptions push live events (messages, matches, call invitations) directly to connected clients. WebRTC signaling is brokered through Supabase, keeping media traffic peer-to-peer and off the application server.
+            </div>
+          </div>
+
+          <!-- Security -->
+          <div class="project-section">
+            <h3 class="project-section-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              Security Implementation
+            </h3>
+            <div class="security-grid">
+              <div class="security-item">
+                <div class="security-item-title">Auth &amp; Session Security</div>
+                <div class="security-item-text">JWT-based authentication with Supabase Auth. Tokens are short-lived with refresh rotation. All sessions are server-validated — client-side auth state is treated as untrusted.</div>
+              </div>
+              <div class="security-item">
+                <div class="security-item-title">Row-Level Security</div>
+                <div class="security-item-text">Supabase RLS policies enforced at the database layer. Users can only access their own records and explicitly granted shared data — even if the API layer is bypassed.</div>
+              </div>
+              <div class="security-item">
+                <div class="security-item-title">Input Validation</div>
+                <div class="security-item-text">All user input sanitized at the API boundary. Message content, profile fields, and media uploads are validated against schema and stripped of executable payloads.</div>
+              </div>
+              <div class="security-item">
+                <div class="security-item-title">Rate Limiting &amp; Abuse Controls</div>
+                <div class="security-item-text">API routes rate-limited per authenticated user. Swipe and message endpoints have additional throttling to prevent spam patterns. Repeated violations trigger temporary suspension flagged for admin review.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Challenges -->
+          <div class="project-section">
+            <h3 class="project-section-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/></svg>
+              Challenges &amp; Solutions
+            </h3>
+            <div>
+              <div class="challenge-item">
+                <div class="challenge-problem">
+                  <div class="ch-label problem">Problem</div>
+                  <div class="ch-text">WebRTC call setup failing for users behind restrictive NAT or corporate firewalls, causing connection drop rates that made the calling feature unreliable.</div>
+                </div>
+                <div class="challenge-solution">
+                  <div class="ch-label solution">Solution</div>
+                  <div class="ch-text">Implemented STUN/TURN server configuration in the WebRTC offer/answer flow. TURN relay is used as a fallback, ensuring near-universal connectivity at the cost of media routing through the relay server.</div>
+                </div>
+              </div>
+              <div class="challenge-item">
+                <div class="challenge-problem">
+                  <div class="ch-label problem">Problem</div>
+                  <div class="ch-text">Real-time message subscriptions creating n² Supabase channel connections as user count grew — leading to performance degradation and connection limit pressure.</div>
+                </div>
+                <div class="challenge-solution">
+                  <div class="ch-label solution">Solution</div>
+                  <div class="ch-text">Refactored to a single multiplexed channel per user with server-side filtering. Reduced active connections by ~80% while maintaining sub-100ms delivery latency across all active conversations.</div>
+                </div>
+              </div>
+              <div class="challenge-item">
+                <div class="challenge-problem">
+                  <div class="ch-label problem">Problem</div>
+                  <div class="ch-text">Admin panel exposing sensitive user data to any authenticated user who discovered the admin routes — IDOR vulnerability in early implementation.</div>
+                </div>
+                <div class="challenge-solution">
+                  <div class="ch-label solution">Solution</div>
+                  <div class="ch-text">Implemented role-based access control at both the API middleware layer and the Supabase RLS layer. Admin routes require a verified admin role on the JWT — authorization is validated server-side on every request.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Impact -->
+          <div class="project-section">
+            <h3 class="project-section-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+              Impact &amp; Results
+            </h3>
+            <div class="impact-grid">
+              <div class="impact-stat">
+                <div class="impact-num">80+</div>
+                <div class="impact-label">Active users</div>
+              </div>
+              <div class="impact-stat">
+                <div class="impact-num">&lt;100ms</div>
+                <div class="impact-label">Message delivery</div>
+              </div>
+              <div class="impact-stat">
+                <div class="impact-num">P2P</div>
+                <div class="impact-label">WebRTC calls</div>
+              </div>
+              <div class="impact-stat">
+                <div class="impact-num">RLS</div>
+                <div class="impact-label">DB-level security</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Engineering Insight -->
+          <div class="insight-box">
+            <div class="insight-label">// Engineering Insight</div>
+            The most valuable decision in SPACE-Y's architecture was enforcing authorization at the database layer via Supabase RLS, not just the API layer. It meant that even if an attacker bypassed the Node.js middleware entirely — via a misconfigured route, a logic bug, or direct SDK access — they would still hit a wall at the data layer. Defense in depth isn't a checkbox; it's a structural commitment.
+          </div>
+
+          <!-- Stack -->
+          <div class="project-section mt-32" style="margin-bottom:0;">
+            <h3 class="project-section-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              Tech Stack
+            </h3>
+            <div class="tech-stack-row">
+              <span class="tag tag-cyan">React</span>
+              <span class="tag tag-cyan">Node.js</span>
+              <span class="tag tag-cyan">Supabase</span>
+              <span class="tag tag-cyan">PostgreSQL</span>
+              <span class="tag tag-ghost">WebRTC</span>
+              <span class="tag tag-ghost">JavaScript</span>
+              <span class="tag tag-ghost">HTML / CSS</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <script src="../js/layout.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

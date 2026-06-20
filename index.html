@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ephy Mshindi — Full Stack Developer & Cybersecurity Specialist</title>
+  <meta name="description" content="Ephy Mshindi (MshindiSecure) — Full Stack Developer, Cybersecurity Specialist and AI-powered engineer based in Nairobi, Kenya." />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/home.css" />
+</head>
+<body>
+
+  <!-- Layout injected by layout.js -->
+
+  <!-- ══════════════════════════════════
+       HERO
+  ══════════════════════════════════ -->
+  <section class="hero" id="hero">
+    <!-- Ambient blobs -->
+    <div class="glow-blob" style="width:600px;height:600px;background:rgba(0,212,255,0.06);top:-200px;left:-100px;"></div>
+    <div class="glow-blob" style="width:400px;height:400px;background:rgba(0,255,140,0.04);bottom:-100px;right:-60px;"></div>
+
+    <div class="container hero-container">
+      <!-- Left: text -->
+      <div class="hero-text">
+        <div class="status-badge reveal" style="margin-bottom:28px;">
+          Available for roles &amp; contracts
+        </div>
+
+        <h1 class="hero-headline reveal reveal-delay-1">
+          I build systems<br />
+          that <span class="hero-highlight">defend</span><br />
+          as hard as they <span class="hero-highlight-alt">ship.</span>
+        </h1>
+
+        <p class="hero-sub reveal reveal-delay-2">
+          Full Stack Developer × Cybersecurity Specialist × AI-powered workflow engineer.
+          Based in Nairobi — building real products with security woven into every layer.
+        </p>
+
+        <div class="hero-roles reveal reveal-delay-2">
+          <span class="tag tag-cyan">Pentesting</span>
+          <span class="tag tag-green">SOC Analysis</span>
+          <span class="tag tag-ghost">React / Node.js</span>
+          <span class="tag tag-orange">Bug Bounty</span>
+        </div>
+
+        <div class="hero-ctas reveal reveal-delay-3">
+          <a href="pages/projects.html" class="btn btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+            View Work
+          </a>
+          <a href="pages/contact.html" class="btn btn-secondary">
+            Hire Me
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <!-- Typed roles -->
+        <div class="hero-typed reveal reveal-delay-4">
+          <span class="font-mono text-muted" style="font-size:0.8rem;">// currently: </span>
+          <span id="typed-role" class="font-mono text-cyan" style="font-size:0.8rem;"></span>
+          <span class="typed-cursor">|</span>
+        </div>
+      </div>
+
+      <!-- Right: profile + terminal -->
+      <div class="hero-visual reveal reveal-delay-2">
+        <div class="hero-profile-card">
+          <div class="hero-img-wrap">
+            <img src="https://res.cloudinary.com/dnaw2g9c0/image/upload/v1781945334/file_00000000d36471f89955f87ce073cd5a_1_qok9fi.png" alt="Ephy Mshindi" class="hero-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+            <div class="hero-img-placeholder">
+              <span>EM</span>
+            </div>
+            <div class="hero-img-ring"></div>
+          </div>
+          <div class="hero-profile-info">
+            <div class="fw-700 text-ghost" style="font-family:var(--font-display)">Ephy Mshindi</div>
+            <div style="font-size:0.82rem;color:var(--muted-bright);margin-top:2px">Security Engineer · Full Stack Dev</div>
+            <div style="font-size:0.78rem;color:var(--muted);margin-top:4px;display:flex;align-items:center;gap:6px;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Nairobi, Kenya
+            </div>
+          </div>
+        </div>
+
+        <!-- Terminal card -->
+        <div class="terminal hero-terminal">
+          <div class="terminal-bar">
+            <div class="terminal-dot red"></div>
+            <div class="terminal-dot yellow"></div>
+            <div class="terminal-dot green"></div>
+            <span style="font-size:0.72rem;color:var(--muted);margin-left:8px;">mshindi@secure:~</span>
+          </div>
+          <div class="terminal-body">
+            <div><span class="t-prompt">❯ </span><span class="t-cmd">whoami</span></div>
+            <div class="t-output">ephy_mshindi — dev &amp; security specialist</div>
+            <div style="margin-top:8px"><span class="t-prompt">❯ </span><span class="t-cmd">nmap --scan-type stealth target.io</span></div>
+            <div class="t-output">Starting Nmap 7.94 ...</div>
+            <div class="t-success">80/tcp  open  http</div>
+            <div class="t-success">443/tcp open  https</div>
+            <div class="t-warn">3306/tcp open  mysql ← flagged</div>
+            <div style="margin-top:8px"><span class="t-prompt">❯ </span><span class="t-cmd">./msec --detect bruteforce --block</span></div>
+            <div class="t-success">✓ 14 IPs blocked. Incident logged.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll hint -->
+    <div class="hero-scroll">
+      <div class="hero-scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       STATS STRIP
+  ══════════════════════════════════ -->
+  <section class="stats-strip">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item reveal">
+          <div class="stat-num">
+            <span data-counter data-target="80" data-suffix="+">0</span>
+          </div>
+          <div class="stat-label">Active Users on SPACE-Y</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item reveal reveal-delay-1">
+          <div class="stat-num">
+            <span data-counter data-target="3" data-suffix="">0</span>+
+          </div>
+          <div class="stat-label">Attack Vectors Covered</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item reveal reveal-delay-2">
+          <div class="stat-num">
+            <span data-counter data-target="100" data-suffix="">0</span>+
+          </div>
+          <div class="stat-label">TryHackMe Challenges</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item reveal reveal-delay-3">
+          <div class="stat-num">
+            <span data-counter data-target="2" data-suffix="">0</span>
+          </div>
+          <div class="stat-label">Production Systems Built</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       WHAT I DO
+  ══════════════════════════════════ -->
+  <section class="section" id="what-i-do">
+    <div class="container">
+      <div class="section-eyebrow reveal">What I Do</div>
+      <h2 class="section-title reveal reveal-delay-1">Three disciplines.<br /><span class="text-cyan">One engineer.</span></h2>
+      <p class="section-subtitle reveal reveal-delay-2">I don't separate security from development — I build products where every layer is designed to resist attack from day one.</p>
+
+      <div class="grid-3 mt-48">
+        <!-- Card 1 -->
+        <div class="card reveal" style="border-top: 2px solid var(--cyan);">
+          <div class="card-icon" style="background:var(--cyan-glow);color:var(--cyan);">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </div>
+          <h3 class="card-title">Full Stack Development</h3>
+          <p class="card-text">Architecting and shipping production-grade applications — from React frontends to Node.js APIs to Supabase-powered real-time backends. I write code that scales and doesn't cut security corners.</p>
+          <div class="mt-16" style="display:flex;flex-wrap:wrap;gap:6px;">
+            <span class="tag tag-ghost">React</span>
+            <span class="tag tag-ghost">Node.js</span>
+            <span class="tag tag-ghost">Supabase</span>
+            <span class="tag tag-ghost">Python</span>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card reveal reveal-delay-1" style="border-top: 2px solid var(--green);">
+          <div class="card-icon" style="background:rgba(0,255,140,0.08);color:var(--green);">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3 class="card-title">Cybersecurity</h3>
+          <p class="card-text">Offensive and defensive security operations: web and network penetration testing, SOC monitoring, threat detection, and security tooling. I find vulnerabilities before attackers do.</p>
+          <div class="mt-16" style="display:flex;flex-wrap:wrap;gap:6px;">
+            <span class="tag tag-ghost">Pentesting</span>
+            <span class="tag tag-ghost">SOC</span>
+            <span class="tag tag-ghost">Burp Suite</span>
+            <span class="tag tag-ghost">Nmap</span>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card reveal reveal-delay-2" style="border-top: 2px solid var(--orange);">
+          <div class="card-icon" style="background:rgba(255,107,53,0.08);color:var(--orange);">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+          </div>
+          <h3 class="card-title">AI-Powered Engineering</h3>
+          <p class="card-text">Leveraging AI to accelerate development cycles, automate threat analysis, and enhance productivity. I treat AI as a force multiplier — not a crutch — embedded into every workflow.</p>
+          <div class="mt-16" style="display:flex;flex-wrap:wrap;gap:6px;">
+            <span class="tag tag-ghost">AI Workflows</span>
+            <span class="tag tag-ghost">Automation</span>
+            <span class="tag tag-ghost">LLMs</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       FEATURED PROJECTS
+  ══════════════════════════════════ -->
+  <section class="section" id="featured" style="background:var(--surface-1);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+    <div class="container">
+      <div class="section-eyebrow reveal">Featured Work</div>
+      <div class="flex-between" style="flex-wrap:wrap;gap:16px;align-items:flex-end;">
+        <h2 class="section-title reveal reveal-delay-1">Systems built.<br /><span class="text-cyan">Threats mitigated.</span></h2>
+        <a href="pages/projects.html" class="btn btn-ghost reveal reveal-delay-1">All Projects →</a>
+      </div>
+
+      <div class="grid-2 mt-48">
+        <!-- MshindiSecure -->
+        <div class="project-card card reveal">
+          <div class="project-label">
+            <span class="tag tag-orange">FLAGSHIP</span>
+          </div>
+          <h3 class="project-title">MshindiSecure</h3>
+          <p class="project-desc">An offensive and defensive cybersecurity platform built to actively monitor, detect, and neutralize real-time threats on enterprise login systems. Catches SQL injection, brute-force patterns, and anomalous sessions before they become breaches.</p>
+          <div class="project-features">
+            <div class="project-feature"><span class="text-green">✓</span> Real-time brute force blocking</div>
+            <div class="project-feature"><span class="text-green">✓</span> SQL injection pattern detection</div>
+            <div class="project-feature"><span class="text-green">✓</span> Login anomaly dashboard</div>
+            <div class="project-feature"><span class="text-green">✓</span> Web pentesting utilities</div>
+          </div>
+          <div class="project-stack">
+            <span class="tag tag-ghost">Python</span>
+            <span class="tag tag-ghost">JavaScript</span>
+            <span class="tag tag-ghost">Kali Linux</span>
+            <span class="tag tag-ghost">SQL</span>
+          </div>
+          <a href="pages/projects.html#mshindisecure" class="btn btn-secondary mt-24" style="width:fit-content;">View Details →</a>
+        </div>
+
+        <!-- SPACE-Y -->
+        <div class="project-card card reveal reveal-delay-1">
+          <div class="project-label">
+            <span class="tag tag-cyan">LIVE</span>
+          </div>
+          <h3 class="project-title">SPACE-Y</h3>
+          <p class="project-desc">A multi-feature real-time social platform — chat, voice/video calls, a swipe discovery system, and an admin control panel — serving 80+ active users. Built to scale, architected with security-aware session management from day one.</p>
+          <div class="project-features">
+            <div class="project-feature"><span class="text-cyan">→</span> Real-time messaging &amp; calls</div>
+            <div class="project-feature"><span class="text-cyan">→</span> Swipe-based user discovery</div>
+            <div class="project-feature"><span class="text-cyan">→</span> Admin moderation panel</div>
+            <div class="project-feature"><span class="text-cyan">→</span> 80+ concurrent users</div>
+          </div>
+          <div class="project-stack">
+            <span class="tag tag-ghost">React</span>
+            <span class="tag tag-ghost">Node.js</span>
+            <span class="tag tag-ghost">Supabase</span>
+            <span class="tag tag-ghost">WebRTC</span>
+          </div>
+          <a href="pages/projects.html#spacey" class="btn btn-secondary mt-24" style="width:fit-content;">View Details →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       SECURITY MINDSET STRIP
+  ══════════════════════════════════ -->
+  <section class="section section-sm" id="mindset">
+    <div class="container">
+      <div class="mindset-wrap reveal">
+        <div class="mindset-quote">
+          "Security is not a feature you add at the end — it's an architectural decision you make before writing the first line."
+        </div>
+        <div class="mindset-attr">— Ephy Mshindi, MshindiSecure</div>
+        <div class="mt-24" style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
+          <a href="pages/cybersecurity.html" class="btn btn-secondary">Cybersecurity Work</a>
+          <a href="pages/about.html" class="btn btn-ghost">My Story</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="js/layout.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // Typed text on hero
+    typeText(document.getElementById('typed-role'), [
+      'building secure systems',
+      'hunting vulnerabilities',
+      'writing clean React',
+      'monitoring threats live',
+      'open to hire'
+    ], 70, 2000);
+  </script>
+</body>
+</html>

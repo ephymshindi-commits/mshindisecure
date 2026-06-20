@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cybersecurity — Ephy Mshindi</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    .sec-domain-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+
+    .sec-domain {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+      transition: var(--transition);
+    }
+    .sec-domain:hover { border-color: var(--border-bright); transform: translateY(-4px); }
+    .sec-domain::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--cyan), transparent);
+    }
+
+    .sec-domain-icon {
+      width: 48px; height: 48px;
+      background: var(--cyan-glow);
+      border: 1px solid rgba(0,212,255,0.15);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 18px;
+    }
+    .sec-domain-title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--ghost);
+      margin-bottom: 10px;
+    }
+    .sec-domain-text { font-size: 0.875rem; color: var(--muted-bright); line-height: 1.75; }
+
+    .sec-checklist { margin-top: 14px; display: flex; flex-direction: column; gap: 6px; }
+    .sec-check {
+      font-size: 0.82rem;
+      color: var(--text);
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .sec-check::before { content: '✓'; color: var(--green); font-weight: 700; flex-shrink: 0; }
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 12px;
+    }
+    .tool-chip {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+      text-align: center;
+      transition: var(--transition);
+    }
+    .tool-chip:hover {
+      border-color: var(--cyan);
+      background: var(--cyan-glow);
+    }
+    .tool-chip-name {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--ghost);
+      display: block;
+      margin-bottom: 4px;
+    }
+    .tool-chip-cat {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+    }
+
+    .thm-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+    .thm-badge {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 10px 16px;
+      font-size: 0.82rem;
+      color: var(--muted-bright);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--transition);
+    }
+    .thm-badge:hover { border-color: var(--cyan); color: var(--cyan); }
+    .thm-badge::before { content: '🏆'; font-size: 0.9rem; }
+
+    .methodology-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    .mstep {
+      padding: 24px;
+      border-right: 1px solid var(--border);
+      position: relative;
+    }
+    .mstep:last-child { border-right: none; }
+    .mstep-num {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--cyan);
+      letter-spacing: 0.15em;
+      margin-bottom: 8px;
+    }
+    .mstep-title {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--ghost);
+      margin-bottom: 8px;
+    }
+    .mstep-text { font-size: 0.78rem; color: var(--muted-bright); line-height: 1.6; }
+
+    .vuln-tag-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+
+    @media (max-width: 680px) {
+      .methodology-steps { grid-template-columns: 1fr; }
+      .mstep { border-right: none; border-bottom: 1px solid var(--border); }
+      .mstep:last-child { border-bottom: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── PAGE HERO ── -->
+  <div class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="container">
+      <div class="section-eyebrow reveal">Security Profile</div>
+      <h1 class="section-title reveal reveal-delay-1">
+        I don't just secure systems.<br />
+        <span class="text-cyan">I break them first.</span>
+      </h1>
+      <p class="section-subtitle reveal reveal-delay-2">
+        Offensive and defensive security operations, penetration testing, SOC analysis, and active bug bounty research — grounded in real-world application, not just theory.
+      </p>
+    </div>
+  </div>
+
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+
+      <!-- ── DOMAINS ── -->
+      <div class="section-eyebrow reveal">Core Domains</div>
+      <div class="sec-domain-grid mt-32">
+
+        <div class="sec-domain reveal">
+          <div class="sec-domain-icon">🔓</div>
+          <div class="sec-domain-title">Web Penetration Testing</div>
+          <div class="sec-domain-text">Systematic exploitation of web application attack surfaces — from OWASP Top 10 to business logic vulnerabilities that automated scanners miss.</div>
+          <div class="sec-checklist">
+            <div class="sec-check">SQL Injection (manual + tool-assisted)</div>
+            <div class="sec-check">Cross-Site Scripting (Reflected, Stored, DOM)</div>
+            <div class="sec-check">Authentication bypass &amp; session hijacking</div>
+            <div class="sec-check">IDOR and broken access control testing</div>
+            <div class="sec-check">API endpoint enumeration and fuzzing</div>
+          </div>
+        </div>
+
+        <div class="sec-domain reveal reveal-delay-1">
+          <div class="sec-domain-icon">🌐</div>
+          <div class="sec-domain-title">Network Analysis</div>
+          <div class="sec-domain-text">Reconnaissance, port scanning, service enumeration, and traffic analysis to map and assess network attack surfaces.</div>
+          <div class="sec-checklist">
+            <div class="sec-check">Nmap host/service/OS enumeration</div>
+            <div class="sec-check">Network traffic capture and analysis</div>
+            <div class="sec-check">Port and protocol vulnerability identification</div>
+            <div class="sec-check">MITM detection and analysis</div>
+            <div class="sec-check">DNS, SMB, and common protocol exploitation</div>
+          </div>
+        </div>
+
+        <div class="sec-domain reveal reveal-delay-2">
+          <div class="sec-domain-icon">🛡️</div>
+          <div class="sec-domain-title">Security Operations (SOC)</div>
+          <div class="sec-domain-text">Monitoring, detection, triage, and response — the defensive side of the security equation that most developers never engage with.</div>
+          <div class="sec-checklist">
+            <div class="sec-check">Login monitoring and anomaly detection</div>
+            <div class="sec-check">Incident triage and classification</div>
+            <div class="sec-check">Alert tuning to reduce false positive noise</div>
+            <div class="sec-check">Threat hunting and log analysis</div>
+            <div class="sec-check">Security event documentation</div>
+          </div>
+        </div>
+
+        <div class="sec-domain reveal">
+          <div class="sec-domain-icon">🐛</div>
+          <div class="sec-domain-title">Bug Bounty Research</div>
+          <div class="sec-domain-text">Active participation in bug bounty programs — finding real vulnerabilities in real systems under responsible disclosure frameworks.</div>
+          <div class="sec-checklist">
+            <div class="sec-check">Target reconnaissance and scope analysis</div>
+            <div class="sec-check">Manual vulnerability discovery</div>
+            <div class="sec-check">PoC development and impact assessment</div>
+            <div class="sec-check">Responsible disclosure reporting</div>
+            <div class="sec-check">CVSS scoring and remediation guidance</div>
+          </div>
+        </div>
+
+        <div class="sec-domain reveal reveal-delay-1">
+          <div class="sec-domain-icon">📡</div>
+          <div class="sec-domain-title">Security Mentorship</div>
+          <div class="sec-domain-text">Running phishing awareness training and security fundamentals sessions — translating technical knowledge into actionable understanding for non-technical stakeholders.</div>
+          <div class="sec-checklist">
+            <div class="sec-check">Phishing simulation and awareness training</div>
+            <div class="sec-check">Social engineering attack education</div>
+            <div class="sec-check">Security hygiene workshops</div>
+            <div class="sec-check">Incident response procedure training</div>
+          </div>
+        </div>
+
+        <div class="sec-domain reveal reveal-delay-2">
+          <div class="sec-domain-icon">⚡</div>
+          <div class="sec-domain-title">Secure Development</div>
+          <div class="sec-domain-text">Building security in from design stage — threat modeling, secure code review, and security architecture for production systems.</div>
+          <div class="sec-checklist">
+            <div class="sec-check">Threat modeling new features pre-implementation</div>
+            <div class="sec-check">Secure code review (auth, input handling, sessions)</div>
+            <div class="sec-check">Parameterized query enforcement</div>
+            <div class="sec-check">Dependency vulnerability scanning</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── PENTEST METHODOLOGY ── -->
+      <div class="section-eyebrow reveal mt-80">Pentest Methodology</div>
+      <h2 class="section-title reveal reveal-delay-1 mb-32">How I approach an engagement</h2>
+      <div class="methodology-steps reveal">
+        <div class="mstep">
+          <div class="mstep-num">01</div>
+          <div class="mstep-title">Reconnaissance</div>
+          <div class="mstep-text">Passive and active info gathering: DNS, WHOIS, tech fingerprinting, exposed endpoints, GitHub dorking.</div>
+        </div>
+        <div class="mstep">
+          <div class="mstep-num">02</div>
+          <div class="mstep-title">Enumeration</div>
+          <div class="mstep-text">Service discovery, port scanning, directory brute-forcing, API endpoint mapping, user enumeration.</div>
+        </div>
+        <div class="mstep">
+          <div class="mstep-num">03</div>
+          <div class="mstep-title">Exploitation</div>
+          <div class="mstep-text">Manual testing of identified attack surfaces. Burp Suite-assisted payload delivery. Logic flaw analysis.</div>
+        </div>
+        <div class="mstep">
+          <div class="mstep-num">04</div>
+          <div class="mstep-title">Post-Exploitation</div>
+          <div class="mstep-text">Impact validation, lateral movement assessment, privilege escalation paths, data exposure scope.</div>
+        </div>
+        <div class="mstep">
+          <div class="mstep-num">05</div>
+          <div class="mstep-title">Reporting</div>
+          <div class="mstep-text">Clear, actionable findings with CVSS scoring, PoC steps, and prioritized remediation guidance.</div>
+        </div>
+      </div>
+
+      <!-- ── VULNERABILITY AREAS ── -->
+      <div class="card reveal mt-48">
+        <h3 class="fw-700 text-ghost mb-16" style="font-family:var(--font-display);">Vulnerability Coverage</h3>
+        <div class="vuln-tag-list">
+          <span class="tag tag-orange">SQLi</span>
+          <span class="tag tag-orange">XSS</span>
+          <span class="tag tag-orange">IDOR</span>
+          <span class="tag tag-orange">CSRF</span>
+          <span class="tag tag-orange">Broken Auth</span>
+          <span class="tag tag-orange">Session Hijacking</span>
+          <span class="tag tag-orange">Brute Force</span>
+          <span class="tag tag-orange">Directory Traversal</span>
+          <span class="tag tag-ghost">SSRF</span>
+          <span class="tag tag-ghost">XXE</span>
+          <span class="tag tag-ghost">Open Redirect</span>
+          <span class="tag tag-ghost">Clickjacking</span>
+          <span class="tag tag-ghost">API Abuse</span>
+          <span class="tag tag-ghost">Insecure Deserialization</span>
+          <span class="tag tag-ghost">Security Misconfig</span>
+        </div>
+      </div>
+
+      <!-- ── TOOLS ── -->
+      <div class="section-eyebrow reveal mt-80">Arsenal</div>
+      <h2 class="section-title reveal reveal-delay-1 mb-32">Tools &amp; Workflows</h2>
+      <div class="tools-grid reveal">
+        <div class="tool-chip"><span class="tool-chip-name">Burp Suite</span><span class="tool-chip-cat">Web Testing</span></div>
+        <div class="tool-chip"><span class="tool-chip-name">Nmap</span><span class="tool-chip-cat">Recon</span></div>
+        <div class="tool-chip"><span class="tool-chip-name">Kali Linux</span><span class="tool-chip-cat">Environment</span></div>
+        <div class="tool-chip"><span class="tool-chip-name">Metasploit</span><span class="tool-chip-cat">Exploitation</span></div>
+        <div class="tool-chip"><span class="tool-chip-name">Gobuster</span><span class="tool-chip-cat">Enumeration</span></div>
+        <div class="tool-chip"><span class="tool-chip-name">Nikto</span><span class="tool-chip-cat">Web Scan</span></div>
+        <div class="tool-chip"><span class="tool-chip-name">Hydra</span><span class="tool-chip-cat">Auth Testing</span></div>
+        <div class="tool-chip"><span class="tool-chip-name">Wireshark</span><span class="tool-chip-cat">Traffic Analysis</span></div>
+        <div class="tool-chip"><span class="tool-chip-name">SQLMap</span><span class="tool-chip-cat">SQLi Testing</span></div>
+        <div class="tool-chip"><span class="tool-chip-name">Python</span><span class="tool-chip-cat">Scripting</span></div>
+        <div class="tool-chip"><span class="tool-chip-name">John the Ripper</span><span class="tool-chip-cat">Password</span></div>
+        <div class="tool-chip"><span class="tool-chip-name">Hashcat</span><span class="tool-chip-cat">Password</span></div>
+      </div>
+
+      <!-- ── TRYHACKME ── -->
+      <div class="section-eyebrow reveal mt-80">Continuous Training</div>
+      <h2 class="section-title reveal reveal-delay-1">TryHackMe &amp; CTF Practice</h2>
+      <p class="section-subtitle reveal reveal-delay-2 mb-24">I use TryHackMe to maintain offensive skill sharpness — working through labs that simulate real attacker techniques in a controlled environment. CTF challenges train pattern recognition for vulnerability classes that only appear in production systems, not tutorials.</p>
+      <div class="thm-row reveal">
+        <div class="thm-badge">Web Exploitation Rooms</div>
+        <div class="thm-badge">Network Pentesting Labs</div>
+        <div class="thm-badge">Privilege Escalation Paths</div>
+        <div class="thm-badge">SOC Level 1 Training</div>
+        <div class="thm-badge">OWASP Top 10 Labs</div>
+        <div class="thm-badge">Password Cracking Challenges</div>
+      </div>
+
+      <!-- ── CTA ── -->
+      <div class="card reveal mt-64" style="text-align:center;padding:48px;">
+        <h2 style="font-family:var(--font-display);font-size:1.6rem;color:var(--ghost);margin-bottom:12px;">Need a security assessment?</h2>
+        <p style="color:var(--muted-bright);max-width:480px;margin:0 auto 28px;">Web app pentests, network audits, secure code review, or phishing awareness training — let's talk about what your infrastructure needs.</p>
+        <a href="contact.html" class="btn btn-primary">Book a consultation</a>
+      </div>
+
+    </div>
+  </section>
+
+  <script src="../js/layout.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

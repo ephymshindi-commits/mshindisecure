@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Skills — Ephy Mshindi</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    .skills-category-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+    }
+
+    .skill-category-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+    .skill-category-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+    }
+    .skill-category-card.dev::before    { background: linear-gradient(90deg, var(--cyan), transparent); }
+    .skill-category-card.sec::before    { background: linear-gradient(90deg, var(--green), transparent); }
+    .skill-category-card.tools::before  { background: linear-gradient(90deg, var(--orange), transparent); }
+
+    .skill-cat-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+    .skill-cat-icon {
+      width: 40px; height: 40px;
+      border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+    }
+    .skill-cat-icon.dev   { background: var(--cyan-glow); }
+    .skill-cat-icon.sec   { background: rgba(0,255,140,0.08); }
+    .skill-cat-icon.tools { background: rgba(255,107,53,0.08); }
+
+    .skill-cat-title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--ghost);
+    }
+    .skill-cat-sub {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    /* ── ICON GRID (tools) ── */
+    .icon-skill-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+    .icon-skill {
+      background: var(--surface-3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 14px 10px;
+      text-align: center;
+      transition: var(--transition);
+    }
+    .icon-skill:hover {
+      border-color: var(--border-bright);
+      background: var(--surface-2);
+    }
+    .icon-skill-emoji { font-size: 1.4rem; display: block; margin-bottom: 6px; }
+    .icon-skill-name {
+      font-size: 0.72rem;
+      color: var(--muted-bright);
+      font-weight: 500;
+    }
+
+    /* ── PROFICIENCY RINGS ── */
+    .proficiency-section {
+      background: var(--surface-1);
+      border: 1px solid var(--border);
+      border-top: none;
+      border-bottom: none;
+      padding: 80px 0;
+    }
+
+    .proficiency-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 32px;
+      margin-top: 48px;
+    }
+
+    .proficiency-item {
+      text-align: center;
+    }
+
+    .ring-wrap {
+      position: relative;
+      width: 120px; height: 120px;
+      margin: 0 auto 16px;
+    }
+
+    .ring-svg { transform: rotate(-90deg); }
+
+    .ring-track {
+      fill: none;
+      stroke: var(--surface-3);
+      stroke-width: 8;
+    }
+    .ring-fill {
+      fill: none;
+      stroke-width: 8;
+      stroke-linecap: round;
+      stroke-dasharray: 314;
+      stroke-dashoffset: 314;
+      transition: stroke-dashoffset 1.4s cubic-bezier(0.4,0,0.2,1);
+    }
+    .ring-fill.animated { stroke-dashoffset: var(--offset); }
+    .ring-fill.cyan   { stroke: var(--cyan);   filter: drop-shadow(0 0 6px rgba(0,212,255,0.5)); }
+    .ring-fill.green  { stroke: var(--green);  filter: drop-shadow(0 0 6px rgba(0,255,140,0.4)); }
+    .ring-fill.orange { stroke: var(--orange); filter: drop-shadow(0 0 6px rgba(255,107,53,0.4)); }
+
+    .ring-label {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--ghost);
+    }
+
+    .proficiency-name {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--ghost);
+      margin-bottom: 4px;
+    }
+    .proficiency-sub {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    /* ── CERTIFICATIONS / EDUCATION ── */
+    .edu-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+    .edu-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      transition: var(--transition);
+    }
+    .edu-card:hover { border-color: var(--border-bright); }
+    .edu-icon {
+      width: 44px; height: 44px;
+      background: var(--cyan-glow);
+      border: 1px solid rgba(0,212,255,0.15);
+      border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+    .edu-title {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--ghost);
+      margin-bottom: 4px;
+    }
+    .edu-sub { font-size: 0.8rem; color: var(--muted-bright); }
+    .edu-year {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--cyan);
+      margin-top: 8px;
+    }
+
+    /* ── CURRENTLY LEARNING ── */
+    .learning-strip {
+      background: linear-gradient(135deg, rgba(0,212,255,0.04), rgba(0,212,255,0.01));
+      border: 1px solid rgba(0,212,255,0.12);
+      border-radius: var(--radius-lg);
+      padding: 28px 32px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .learning-label {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--cyan);
+      white-space: nowrap;
+    }
+    .learning-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  </style>
+</head>
+<body>
+
+  <!-- ── PAGE HERO ── -->
+  <div class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="container">
+      <div class="section-eyebrow reveal">Capabilities</div>
+      <h1 class="section-title reveal reveal-delay-1">
+        Stack, skills,<br />
+        <span class="text-cyan">and expertise levels.</span>
+      </h1>
+      <p class="section-subtitle reveal reveal-delay-2">
+        Not a list of buzzwords — a realistic assessment of where I operate with confidence and where I'm still growing.
+      </p>
+    </div>
+  </div>
+
+  <!-- ── SKILL BARS BY CATEGORY ── -->
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+      <div class="section-eyebrow reveal">Categorized Skills</div>
+      <h2 class="section-title reveal reveal-delay-1 mb-32">What I work with daily</h2>
+
+      <div class="skills-category-grid">
+
+        <!-- Development -->
+        <div class="skill-category-card dev reveal">
+          <div class="skill-cat-header">
+            <div class="skill-cat-icon dev">💻</div>
+            <div>
+              <div class="skill-cat-title">Development</div>
+              <div class="skill-cat-sub">Languages, frameworks, platforms</div>
+            </div>
+          </div>
+          <div class="skill-bar-wrap">
+            <div class="skill-bar-label"><span>JavaScript</span><span class="text-cyan">88%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="--w:0.88" data-width="0.88"></div></div>
+          </div>
+          <div class="skill-bar-wrap">
+            <div class="skill-bar-label"><span>Python</span><span class="text-cyan">85%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="--w:0.85" data-width="0.85"></div></div>
+          </div>
+          <div class="skill-bar-wrap">
+            <div class="skill-bar-label"><span>React</span><span class="text-cyan">82%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="--w:0.82" data-width="0.82"></div></div>
+          </div>
+          <div class="skill-bar-wrap">
+            <div class="skill-bar-label"><span>Node.js</span><span class="text-cyan">80%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="--w:0.80" data-width="0.80"></div></div>
+          </div>
+          <div class="skill-bar-wrap">
+            <div class="skill-bar-label"><span>SQL / PostgreSQL</span><span class="text-cyan">78%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="--w:0.78" data-width="0.78"></div></div>
+          </div>
+          <div class="skill-bar-wrap">
+            <div class="skill-bar-label"><span>HTML / CSS</span><span class="text-cyan">92%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="--w:0.92" data-width="0.92"></div></div>
+          </div>
+          <div class="skill-bar-wrap">
+            <div class="skill-bar-label"><span>Supabase</span><span class="text-cyan">80%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="--w:0.80" data-width="0.80"></div></div>
+          </div>
+        </div>
+
+        <!-- Cybersecurity -->
+        <div class="skill-category-card sec reveal reveal-delay-1">
+          <div class="skill-cat-header">
+            <div class="skill-cat-icon sec">🔐</div>
+            <div>
+              <div class="skill-cat-title">Cybersecurity</div>
+              <div class="skill-cat-sub">Offensive, defensive, operational</div>
+            </div>
+          </div>
+          <div class="skill-bar-wrap">
+            <div class="skill-bar-label"><span style="color:var(--text)">Web Penetration Testing</span><span class="text-green">85%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="background:linear-gradient(90deg, #00cc6e, var(--green));box-shadow:0 0 8px rgba(0,255,140,0.4);" data-width="0.85"></div></div>
+          </div>
+          <div class="skill-bar-wrap">
+            <div class="skill-bar-label"><span style="color:var(--text)">Network Analysis</span><span class="text-green">80%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="background:linear-gradient(90deg, #00cc6e, var(--green));box-shadow:0 0 8px rgba(0,255,140,0.4);" data-width="0.80"></div></div>
+          </div>
+          <div class="skill-bar-wrap">
+            <div class="skill-bar-label"><span style="color:var(--text)">SOC / Threat Detection</span><span class="text-green">78%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="background:linear-gradient(90deg, #00cc6e, var(--green));box-shadow:0 0 8px rgba(0,255,140,0.4);" data-width="0.78"></div></div>
+          </div>
+          <div class="skill-bar-wrap">
+            <div class="skill-bar-label"><span style="color:var(--text)">Bug Bounty / Research</span><span class="text-green">74%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="background:linear-gradient(90deg, #00cc6e, var(--green));box-shadow:0 0 8px rgba(0,255,140,0.4);" data-width="0.74"></div></div>
+          </div>
+          <div class="skill-bar-wrap">
+            <div class="skill-bar-label"><span style="color:var(--text)">Secure Code Architecture</span><span class="text-green">82%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="background:linear-gradient(90deg, #00cc6e, var(--green));box-shadow:0 0 8px rgba(0,255,140,0.4);" data-width="0.82"></div></div>
+          </div>
+          <div class="skill-bar-wrap">
+            <div class="skill-bar-label"><span style="color:var(--text)">Incident Response</span><span class="text-green">72%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="background:linear-gradient(90deg, #00cc6e, var(--green));box-shadow:0 0 8px rgba(0,255,140,0.4);" data-width="0.72"></div></div>
+          </div>
+          <div class="skill-bar-wrap">
+            <div class="skill-bar-label"><span style="color:var(--text)">OSINT &amp; Reconnaissance</span><span class="text-green">76%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="background:linear-gradient(90deg, #00cc6e, var(--green));box-shadow:0 0 8px rgba(0,255,140,0.4);" data-width="0.76"></div></div>
+          </div>
+        </div>
+
+        <!-- Tools -->
+        <div class="skill-category-card tools reveal reveal-delay-2">
+          <div class="skill-cat-header">
+            <div class="skill-cat-icon tools">🛠️</div>
+            <div>
+              <div class="skill-cat-title">Tools &amp; Platforms</div>
+              <div class="skill-cat-sub">Daily workflow utilities</div>
+            </div>
+          </div>
+          <div class="icon-skill-grid">
+            <div class="icon-skill"><span class="icon-skill-emoji">🐉</span><span class="icon-skill-name">Kali Linux</span></div>
+            <div class="icon-skill"><span class="icon-skill-emoji">🔥</span><span class="icon-skill-name">Burp Suite</span></div>
+            <div class="icon-skill"><span class="icon-skill-emoji">📡</span><span class="icon-skill-name">Nmap</span></div>
+            <div class="icon-skill"><span class="icon-skill-emoji">🗃️</span><span class="icon-skill-name">SQLMap</span></div>
+            <div class="icon-skill"><span class="icon-skill-emoji">🔭</span><span class="icon-skill-name">Wireshark</span></div>
+            <div class="icon-skill"><span class="icon-skill-emoji">🔑</span><span class="icon-skill-name">Hydra</span></div>
+            <div class="icon-skill"><span class="icon-skill-emoji">⚙️</span><span class="icon-skill-name">Metasploit</span></div>
+            <div class="icon-skill"><span class="icon-skill-emoji">📁</span><span class="icon-skill-name">Gobuster</span></div>
+            <div class="icon-skill"><span class="icon-skill-emoji">🌐</span><span class="icon-skill-name">Nikto</span></div>
+            <div class="icon-skill"><span class="icon-skill-emoji">🐙</span><span class="icon-skill-name">Git / GitHub</span></div>
+            <div class="icon-skill"><span class="icon-skill-emoji">🟢</span><span class="icon-skill-name">Supabase</span></div>
+            <div class="icon-skill"><span class="icon-skill-emoji">🤖</span><span class="icon-skill-name">AI Tooling</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PROFICIENCY RINGS ── -->
+  <section class="proficiency-section">
+    <div class="container">
+      <div class="section-eyebrow reveal">Core Strengths</div>
+      <h2 class="section-title reveal reveal-delay-1">Where I operate with confidence</h2>
+      <div class="proficiency-grid">
+
+        <div class="proficiency-item reveal">
+          <div class="ring-wrap">
+            <svg class="ring-svg" width="120" height="120" viewBox="0 0 120 120">
+              <circle class="ring-track" cx="60" cy="60" r="50"/>
+              <circle class="ring-fill cyan" cx="60" cy="60" r="50" style="--offset: 37.7"/>
+            </svg>
+            <div class="ring-label">88%</div>
+          </div>
+          <div class="proficiency-name">JavaScript</div>
+          <div class="proficiency-sub">Full-stack, ES6+, async patterns</div>
+        </div>
+
+        <div class="proficiency-item reveal reveal-delay-1">
+          <div class="ring-wrap">
+            <svg class="ring-svg" width="120" height="120" viewBox="0 0 120 120">
+              <circle class="ring-track" cx="60" cy="60" r="50"/>
+              <circle class="ring-fill green" cx="60" cy="60" r="50" style="--offset: 47.1"/>
+            </svg>
+            <div class="ring-label">85%</div>
+          </div>
+          <div class="proficiency-name">Web Pentesting</div>
+          <div class="proficiency-sub">OWASP, manual + tool-assisted</div>
+        </div>
+
+        <div class="proficiency-item reveal reveal-delay-2">
+          <div class="ring-wrap">
+            <svg class="ring-svg" width="120" height="120" viewBox="0 0 120 120">
+              <circle class="ring-track" cx="60" cy="60" r="50"/>
+              <circle class="ring-fill cyan" cx="60" cy="60" r="50" style="--offset: 56.5"/>
+            </svg>
+            <div class="ring-label">82%</div>
+          </div>
+          <div class="proficiency-name">React</div>
+          <div class="proficiency-sub">Hooks, state mgmt, real-time UI</div>
+        </div>
+
+        <div class="proficiency-item reveal reveal-delay-3">
+          <div class="ring-wrap">
+            <svg class="ring-svg" width="120" height="120" viewBox="0 0 120 120">
+              <circle class="ring-track" cx="60" cy="60" r="50"/>
+              <circle class="ring-fill green" cx="60" cy="60" r="50" style="--offset: 56.5"/>
+            </svg>
+            <div class="ring-label">82%</div>
+          </div>
+          <div class="proficiency-name">Secure Architecture</div>
+          <div class="proficiency-sub">Auth, RLS, threat modeling</div>
+        </div>
+
+        <div class="proficiency-item reveal">
+          <div class="ring-wrap">
+            <svg class="ring-svg" width="120" height="120" viewBox="0 0 120 120">
+              <circle class="ring-track" cx="60" cy="60" r="50"/>
+              <circle class="ring-fill orange" cx="60" cy="60" r="50" style="--offset: 47.1"/>
+            </svg>
+            <div class="ring-label">85%</div>
+          </div>
+          <div class="proficiency-name">Python</div>
+          <div class="proficiency-sub">Scripting, automation, tooling</div>
+        </div>
+
+        <div class="proficiency-item reveal reveal-delay-1">
+          <div class="ring-wrap">
+            <svg class="ring-svg" width="120" height="120" viewBox="0 0 120 120">
+              <circle class="ring-track" cx="60" cy="60" r="50"/>
+              <circle class="ring-fill cyan" cx="60" cy="60" r="50" style="--offset: 62.8"/>
+            </svg>
+            <div class="ring-label">80%</div>
+          </div>
+          <div class="proficiency-name">Node.js / APIs</div>
+          <div class="proficiency-sub">REST, middleware, auth flows</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── EDUCATION & CERTS ── -->
+  <section class="section" style="background: var(--surface-1); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="container">
+      <div class="section-eyebrow reveal">Education &amp; Training</div>
+      <h2 class="section-title reveal reveal-delay-1 mb-32">Where the foundation was built</h2>
+      <div class="edu-row">
+        <div class="edu-card reveal">
+          <div class="edu-icon">🎓</div>
+          <div>
+            <div class="edu-title">Moringa School</div>
+            <div class="edu-sub">Cybersecurity Program — web security, network analysis, penetration testing fundamentals, and ethical hacking principles.</div>
+            <div class="edu-year">2023</div>
+          </div>
+        </div>
+        <div class="edu-card reveal reveal-delay-1">
+          <div class="edu-icon">🏴</div>
+          <div>
+            <div class="edu-title">TryHackMe</div>
+            <div class="edu-sub">Ongoing CTF and lab-based training covering offensive security, privilege escalation, OWASP Top 10, SOC operations, and network exploitation.</div>
+            <div class="edu-year">2023 – Present</div>
+          </div>
+        </div>
+        <div class="edu-card reveal reveal-delay-2">
+          <div class="edu-icon">🐛</div>
+          <div>
+            <div class="edu-title">Bug Bounty Programs</div>
+            <div class="edu-sub">Active participation in bug bounty platforms. Real-world vulnerability discovery in production systems under responsible disclosure frameworks.</div>
+            <div class="edu-year">2024 – Present</div>
+          </div>
+        </div>
+        <div class="edu-card reveal reveal-delay-3">
+          <div class="edu-icon">⚡</div>
+          <div>
+            <div class="edu-title">Self-Directed Engineering</div>
+            <div class="edu-sub">Production systems built from scratch: MshindiSecure security platform, SPACE-Y real-time social platform. Learning through real architecture decisions.</div>
+            <div class="edu-year">2024 – Present</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CURRENTLY LEARNING ── -->
+  <section class="section section-sm">
+    <div class="container">
+      <div class="learning-strip reveal">
+        <div class="learning-label">// Currently exploring</div>
+        <div class="learning-tags">
+          <span class="tag tag-cyan">Cloud Security (AWS)</span>
+          <span class="tag tag-cyan">Docker &amp; Containers</span>
+          <span class="tag tag-ghost">Advanced Exploit Dev</span>
+          <span class="tag tag-ghost">TypeScript</span>
+          <span class="tag tag-ghost">AI Security / Prompt Injection</span>
+          <span class="tag tag-green">OSCP Preparation</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="../js/layout.js"></script>
+  <script src="../js/main.js"></script>
+  <script>
+    // Animate rings on scroll
+    const ringObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.querySelectorAll('.ring-fill').forEach(ring => {
+            ring.classList.add('animated');
+          });
+          ringObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    document.querySelectorAll('.proficiency-item').forEach(el => ringObserver.observe(el));
+
+    // Animate skill bars manually since color variants need custom handling
+    const barObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.querySelectorAll('.skill-bar-fill').forEach(bar => {
+            const w = bar.getAttribute('data-width') || 0.8;
+            bar.style.transform = `scaleX(${w})`;
+          });
+          barObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    document.querySelectorAll('.skill-category-card').forEach(el => barObserver.observe(el));
+  </script>
+</body>
+</html>
