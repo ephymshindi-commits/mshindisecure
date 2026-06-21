@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Projects — Ephy Mshindi</title>
-  <meta name="description" content="MshindiSecure, SPACE-Y and other production engineering work by Ephy Mshindi." />
+  <meta name="description" content="MshindiSecure, SPACE-Y, CraftyHands — production engineering work by Ephy Mshindi, Full Stack Developer and Cybersecurity Specialist." />
   <link rel="stylesheet" href="../css/style.css" />
   <style>
     /* ── PROJECT PAGE ── */
@@ -535,6 +535,11 @@
           <p class="project-full-overview">
             A full-featured social discovery platform built for real-time human connection — combining live chat, peer-to-peer voice and video calls, a swipe-based user discovery engine, and an administrative control panel. Currently serving an active user base of 80+ with zero downtime since launch, built entirely on a security-conscious architecture.
           </p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:28px;">
+            <a href="https://spacey-tau.vercel.app/" target="_blank" rel="noopener" class="btn btn-primary" style="font-size:0.85rem;padding:10px 20px;">
+              &#8599;&nbsp; View Live Site
+            </a>
+          </div>
         </div>
 
         <div class="project-full-body">
@@ -736,6 +741,230 @@
               <span class="tag tag-ghost">WebRTC</span>
               <span class="tag tag-ghost">JavaScript</span>
               <span class="tag tag-ghost">HTML / CSS</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ══ PROJECT 3: CraftyHands ══ -->
+      <div class="project-full reveal" id="craftyhands">
+        <div class="project-full-header" style="--accent:#00ff8c;">
+          <div class="project-full-meta">
+            <span class="tag tag-green">LIVE · E-COMMERCE</span>
+            <span class="tag tag-ghost">Full Stack</span>
+            <span class="tag tag-ghost">Artisan Marketplace</span>
+          </div>
+          <h2 class="project-full-title">CraftyHands</h2>
+          <p class="project-full-overview">
+            A production e-commerce platform purpose-built for artisan sellers of handmade and hand-crafted clothing. CraftyHands handles the full commercial lifecycle — product discovery, filtering, cart management, checkout, and a seller dashboard — on a secure, real-time backend. Built to prove that indie crafters deserve the same quality of digital storefront as large retail brands.
+          </p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:28px;">
+            <a href="https://craftyhands-oqnx.vercel.app/" target="_blank" rel="noopener" class="btn btn-primary" style="font-size:0.85rem;padding:10px 20px;">
+              &#8599;&nbsp; View Live Site
+            </a>
+          </div>
+        </div>
+
+        <div class="project-full-body">
+
+          <!-- Key Features -->
+          <div class="project-section">
+            <h3 class="project-section-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              Key Features
+            </h3>
+            <div class="features-grid">
+              <div class="feature-item">
+                <div class="feature-dot" style="background:var(--green);box-shadow:0 0 6px var(--green);"></div>
+                <div>
+                  <div class="feature-item-title">Product Catalogue &amp; Filtering</div>
+                  <div class="feature-item-text">Dynamic product listings with category filters, search, and sort — letting buyers find specific handmade pieces without friction.</div>
+                </div>
+              </div>
+              <div class="feature-item">
+                <div class="feature-dot" style="background:var(--green);box-shadow:0 0 6px var(--green);"></div>
+                <div>
+                  <div class="feature-item-title">Cart &amp; Checkout Flow</div>
+                  <div class="feature-item-text">Persistent cart state with quantity management, item removal, and a multi-step checkout experience designed for low drop-off rates.</div>
+                </div>
+              </div>
+              <div class="feature-item">
+                <div class="feature-dot" style="background:var(--green);box-shadow:0 0 6px var(--green);"></div>
+                <div>
+                  <div class="feature-item-title">Seller / Admin Dashboard</div>
+                  <div class="feature-item-text">Sellers manage inventory, upload product images, set pricing, and track orders — all from a protected dashboard with role-based access.</div>
+                </div>
+              </div>
+              <div class="feature-item">
+                <div class="feature-dot" style="background:var(--green);box-shadow:0 0 6px var(--green);"></div>
+                <div>
+                  <div class="feature-item-title">Product Image Uploads</div>
+                  <div class="feature-item-text">Secure file uploads to Supabase Storage with CDN delivery — optimized for fast load times even on slower mobile connections.</div>
+                </div>
+              </div>
+              <div class="feature-item">
+                <div class="feature-dot" style="background:var(--green);box-shadow:0 0 6px var(--green);"></div>
+                <div>
+                  <div class="feature-item-title">Auth &amp; User Accounts</div>
+                  <div class="feature-item-text">Buyer and seller accounts with Supabase Auth. Role separation enforced at the database layer — sellers can't access buyer order data and vice versa.</div>
+                </div>
+              </div>
+              <div class="feature-item">
+                <div class="feature-dot" style="background:var(--green);box-shadow:0 0 6px var(--green);"></div>
+                <div>
+                  <div class="feature-item-title">Responsive Storefront</div>
+                  <div class="feature-item-text">Mobile-first design that renders cleanly across devices — critical for an artisan audience that shops and sells predominantly on phone.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Architecture -->
+          <div class="project-section">
+            <h3 class="project-section-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+              Technical Architecture
+            </h3>
+            <div class="arch-row">
+              <div class="arch-block">
+                <div class="arch-block-label">Frontend</div>
+                <div class="arch-block-value">React</div>
+              </div>
+              <div class="arch-block">
+                <div class="arch-block-label">Backend API</div>
+                <div class="arch-block-value">Node.js</div>
+              </div>
+              <div class="arch-block">
+                <div class="arch-block-label">Database</div>
+                <div class="arch-block-value">Supabase (PostgreSQL)</div>
+              </div>
+              <div class="arch-block">
+                <div class="arch-block-label">File Storage</div>
+                <div class="arch-block-value">Supabase Storage</div>
+              </div>
+              <div class="arch-block">
+                <div class="arch-block-label">Hosting</div>
+                <div class="arch-block-value">Vercel</div>
+              </div>
+            </div>
+            <div class="mt-16" style="font-size:0.875rem;color:var(--muted-bright);line-height:1.75;">
+              CraftyHands follows a clean separation between UI and data layers. React handles all client-side rendering and state — cart, filters, and session — while the Node.js API processes business logic like order creation and role verification before touching the database. Supabase Row-Level Security ensures that even a direct SDK call from a rogue client cannot access another user's orders or seller inventory.
+            </div>
+          </div>
+
+          <!-- Security -->
+          <div class="project-section">
+            <h3 class="project-section-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              Security Implementation
+            </h3>
+            <div class="security-grid">
+              <div class="security-item">
+                <div class="security-item-title">Role-Based Access Control</div>
+                <div class="security-item-text">Buyer and seller roles enforced at both API middleware and Supabase RLS layer. A buyer account cannot reach seller dashboard routes — period, regardless of URL manipulation.</div>
+              </div>
+              <div class="security-item">
+                <div class="security-item-title">Secure File Uploads</div>
+                <div class="security-item-text">Product image uploads are validated for MIME type and size on the server before storage. Bucket policies in Supabase Storage restrict read/write access per authenticated user.</div>
+              </div>
+              <div class="security-item">
+                <div class="security-item-title">Input Validation</div>
+                <div class="security-item-text">All product data, pricing, and order inputs are sanitized and validated server-side before database writes — preventing injection and ensuring data integrity.</div>
+              </div>
+              <div class="security-item">
+                <div class="security-item-title">Auth Token Security</div>
+                <div class="security-item-text">JWT-based sessions via Supabase Auth with refresh token rotation. Server-side validation on every protected route — client-reported identity is never trusted directly.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Challenges -->
+          <div class="project-section">
+            <h3 class="project-section-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/></svg>
+              Challenges &amp; Solutions
+            </h3>
+            <div>
+              <div class="challenge-item">
+                <div class="challenge-problem">
+                  <div class="ch-label problem">Problem</div>
+                  <div class="ch-text">Cart state was being lost on page refresh — React state alone doesn't survive navigation, which is fatal for an e-commerce checkout flow.</div>
+                </div>
+                <div class="challenge-solution">
+                  <div class="ch-label solution">Solution</div>
+                  <div class="ch-text">Persisted cart state to Supabase for authenticated users and localStorage for guests, with a merge strategy on login — so no items are ever lost mid-session regardless of auth state.</div>
+                </div>
+              </div>
+              <div class="challenge-item">
+                <div class="challenge-problem">
+                  <div class="ch-label problem">Problem</div>
+                  <div class="ch-text">Product images uploaded by sellers were loading slowly due to large file sizes, degrading the storefront experience especially on mobile.</div>
+                </div>
+                <div class="challenge-solution">
+                  <div class="ch-label solution">Solution</div>
+                  <div class="ch-text">Added client-side image compression before upload and leveraged Supabase Storage's CDN edge delivery. Load times dropped significantly — images now load from the nearest edge node to the visitor.</div>
+                </div>
+              </div>
+              <div class="challenge-item">
+                <div class="challenge-problem">
+                  <div class="ch-label problem">Problem</div>
+                  <div class="ch-text">Sellers needed to manage inventory and view orders in one dashboard, but mixing those concerns created complex permission boundaries between what a seller could see vs. a buyer.</div>
+                </div>
+                <div class="challenge-solution">
+                  <div class="ch-label solution">Solution</div>
+                  <div class="ch-text">Built a strict role-based data access model — seller queries filter by seller_id at the RLS layer, making it structurally impossible to leak another seller's inventory or a buyer's personal order data.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Impact -->
+          <div class="project-section">
+            <h3 class="project-section-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+              Impact &amp; Results
+            </h3>
+            <div class="impact-grid">
+              <div class="impact-stat">
+                <div class="impact-num">Live</div>
+                <div class="impact-label">Deployed on Vercel</div>
+              </div>
+              <div class="impact-stat">
+                <div class="impact-num">2</div>
+                <div class="impact-label">User roles (buyer/seller)</div>
+              </div>
+              <div class="impact-stat">
+                <div class="impact-num">RLS</div>
+                <div class="impact-label">DB-layer security</div>
+              </div>
+              <div class="impact-stat">
+                <div class="impact-num">CDN</div>
+                <div class="impact-label">Edge image delivery</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Insight -->
+          <div class="insight-box">
+            <div class="insight-label">// Engineering Insight</div>
+            The core architecture lesson in CraftyHands was that e-commerce security isn't just about payment security — it's about data isolation between user roles. The decision to enforce seller/buyer data separation at the Supabase RLS layer, not just the API, means the access boundaries hold even if application-layer logic has a bug. That's the kind of defense-in-depth thinking I carry from security work directly into product engineering.
+          </div>
+
+          <!-- Stack -->
+          <div class="project-section mt-32" style="margin-bottom:0;">
+            <h3 class="project-section-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              Tech Stack
+            </h3>
+            <div class="tech-stack-row">
+              <span class="tag tag-cyan">React</span>
+              <span class="tag tag-cyan">Node.js</span>
+              <span class="tag tag-cyan">Supabase</span>
+              <span class="tag tag-cyan">PostgreSQL</span>
+              <span class="tag tag-ghost">Supabase Storage</span>
+              <span class="tag tag-ghost">JavaScript</span>
+              <span class="tag tag-ghost">Vercel</span>
             </div>
           </div>
         </div>
